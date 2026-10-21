@@ -1,0 +1,155 @@
+{
+  "prefix": "&8[&6KOTH&8] &r",
+  "general": {
+    "no-permission": "{prefix}&cVous n'avez pas la permission.",
+    "players-only": "{prefix}&cCette commande est réservée aux joueurs.",
+    "unknown-command": "{prefix}&cCommande inconnue. Faites &f/{label} help&c.",
+    "usage": "{prefix}&cUsage : &f/{label} {command} {usage}",
+    "error": "{prefix}&cUne erreur est survenue, prévenez un administrateur.",
+    "reload-done": "{prefix}&aConfiguration rechargée ({koths} KOTH chargés).",
+    "reload-problems": "{prefix}&c{count} problème(s) détecté(s) :",
+    "reload-problem": "&8- &c{problem}",
+    "saved": "{prefix}&aStatistiques sauvegardées."
+  },
+  "help": {
+    "header": "&6&m-------&r &eKoriaKoth &6&m-------",
+    "line": "&e/{label} {command} &7{usage} &8- &f{description}",
+    "footer": "&6&m-----------------------------",
+    "commands": {
+      "help": { "usage": "", "description": "Affiche cette aide" },
+      "menu": { "usage": "", "description": "Ouvre le menu des KOTH" },
+      "list": { "usage": "", "description": "Liste les KOTH et leur planning" },
+      "top": { "usage": "[koth]", "description": "Classement des factions" },
+      "info": { "usage": "", "description": "État de l'évènement en cours" },
+      "tp": { "usage": "<koth>", "description": "Téléporte au centre d'un KOTH" },
+      "start": { "usage": "<koth> [force]", "description": "Démarre un KOTH immédiatement" },
+      "stop": { "usage": "[koth]", "description": "Arrête un KOTH sans vainqueur" },
+      "create": { "usage": "<name>", "description": "Crée un KOTH autour de ta position" },
+      "delete": { "usage": "<koth>", "description": "Supprime un KOTH de koths.json" },
+      "zone": { "usage": "<koth> <1|2>", "description": "Place un coin de la zone à ta position" },
+      "config": { "usage": "[file]", "description": "Éditeur de configuration en jeu" },
+      "save": { "usage": "", "description": "Sauvegarde les statistiques" },
+      "reload": { "usage": "", "description": "Recharge la configuration" }
+    }
+  },
+  "koth": {
+    "start": [
+      "{prefix}&6&lKOTH &eLe &f{koth} &eest ouvert ! &7({monde} : {x}, {y}, {z})",
+      "{prefix}&7Restez seuls &f{temps} &7dans la zone pour le remporter.",
+      "[title]&6KOTH ouvert !;;&e{koth}"
+    ],
+    "warn": "{prefix}&6&lKOTH &eLe &f{koth} &eouvre dans &f{temps}&e.",
+    "control": "{prefix}&e{controle} &7contrôle le &f{koth} &7- il reste &f{temps}&7.",
+    "countdown": "{prefix}&e{controle} &7capture le &f{koth} &7dans &f{temps} &8({pourcentage}%)",
+    "win": [
+      "{prefix}&6&lVICTOIRE &e{controle} &6remporte le &f{koth} &6! &7(+{points} points de faction)",
+      "{prefix}&7Capteur : &f{capteur} &8| &7Meilleur capteur : &f{meilleur} &8({meilleur_temps})",
+      "[title]&6{controle};;&eremporte le KOTH !"
+    ],
+    "timeout": "{prefix}&cTemps écoulé : le &f{koth} &cse ferme sans vainqueur.",
+    "stopped": "{prefix}&cLe &f{koth} &ca été arrêté.",
+    "none-configured": "{prefix}&cAucun KOTH n'est configuré. Faites &f/{label} create <name>&c.",
+    "unknown": "{prefix}&cKOTH inconnu : &f{koth}",
+    "no-zone": "{prefix}&cLa zone du &f{koth} &cn'est pas définie (&f/{label} zone <koth> 1&c puis &f2&c).",
+    "teleported": "{prefix}&aTéléporté au &f{koth}&a.",
+    "list-header": "&6&m------&r &eKOTH ({total}) &6&m------",
+    "list-line": "&e{koth} &8({id}) &7- {etat} &8| &7planning : &f{planning} &8| &7dernier : &f{dernier}",
+    "list-footer": "&6&m-----------------------------",
+    "info-running": [
+      "{prefix}&e{koth} &7en cours dans &f{monde}&7.",
+      "{prefix}&7{etat} &8| &7Capture dans &f{temps} &8({pourcentage}%)",
+      "{prefix}{barre} &7{joueurs} joueur(s) dans la zone"
+    ],
+    "info-none": "{prefix}&7Aucun KOTH en cours et aucun démarrage prévu.",
+    "info-next": "{prefix}&7Prochain KOTH : &e{koth} &7dans &f{temps} &8({planning})"
+  },
+  "display": {
+    "actionbar": "[actionbar]&e{koth} &8| {barre} &8| &f{temps} &8| {etat}",
+    "state-capturing": "&a{controle} capture",
+    "state-contested": "&cZone contestée",
+    "state-empty": "&7Zone vide",
+    "state-waiting": "&7En attente",
+    "contested-tag": " &c(contestée)"
+  },
+  "scoreboard": {
+    "title": "&6&l» KOTH «",
+    "lines": [
+      "&8&m--------------------",
+      "&e{koth}",
+      "",
+      "&6Position",
+      "&7» &f{x}, {y}, {z}",
+      "",
+      "&6Capture{contestee}",
+      "&7» &e{controle}",
+      "&7» &f{capteur}",
+      "&7» Reste &a{temps}",
+      "",
+      "&6Meilleur capteur",
+      "&7» &f{meilleur} ({meilleur_temps})",
+      "&8&m--------------------"
+    ]
+  },
+  "protection": {
+    "protected-zone": "{prefix}&cLa zone du KOTH est protégée.",
+    "no-pearl": "{prefix}&cLes enderpearls sont interdites dans la zone du KOTH."
+  },
+  "rewards": {
+    "pending": "{prefix}&aTu as reçu des récompenses pendant ton absence.",
+    "inventory-full": "{prefix}&eInventaire plein : des objets ont été déposés au sol.",
+    "none": "&7Aucune",
+    "describe": { "points": "&6{quantite} points de faction", "money": "&e{quantite}$", "item": "&f{quantite}x {objet}" }
+  },
+  "admin": {
+    "start-ok": "{prefix}&aLe &f{koth} &aa été démarré.",
+    "start-inconnu": "{prefix}&cKOTH inconnu : &f{id}",
+    "start-deja_en_cours": "{prefix}&cLe &f{koth} &cest déjà en cours.",
+    "start-autre_en_cours": "{prefix}&cUn autre KOTH est en cours (ajoutez &fforce&c pour passer outre).",
+    "start-zone_invalide": "{prefix}&cLa zone du &f{koth} &cest incomplète ou son monde n'est pas chargé.",
+    "start-annule": "{prefix}&cLe démarrage a été annulé par un autre plugin.",
+    "stopped": "{prefix}&aLe &f{koth} &aa été arrêté.",
+    "stopped-all": "{prefix}&aTous les KOTH en cours ont été arrêtés.",
+    "not-running": "{prefix}&cLe &f{koth} &cn'est pas en cours.",
+    "nothing-running": "{prefix}&cAucun KOTH n'est en cours.",
+    "created": "{prefix}&aKOTH &f{id} &acréé dans &f{monde}&a. Ajustez la zone avec &f/{label} zone {id} 1&a et &f2&a.",
+    "deleted": "{prefix}&aKOTH &f{id} &asupprimé.",
+    "confirm-delete": "{prefix}&eRefaites &f/{label} delete {id} &edans les 10 secondes pour confirmer.",
+    "zone-set": "{prefix}&aCoin &f{coin} &adu KOTH &f{id} &aplacé en &f{x}, {y}, {z}&a. Zone : &f{zone}",
+    "invalid-id": "{prefix}&cNom invalide : lettres minuscules, chiffres, - et _ uniquement.",
+    "already-exists": "{prefix}&cLe KOTH &f{id} &cexiste déjà."
+  },
+  "top": { "all": "Tous les KOTH" },
+  "planning": { "at": "à" },
+  "values": {
+    "none": "Aucun",
+    "nobody": "Personne",
+    "no-faction": "Aucune",
+    "never": "jamais",
+    "unlimited": "illimitée",
+    "yes-text": "oui",
+    "no-text": "non"
+  },
+  "time": { "days": "j", "hours": "h", "minutes": "min", "seconds": "s", "now": "maintenant", "never": "jamais" },
+  "config-editor": {
+    "cancel-word": "annuler",
+    "empty-word": "vide",
+    "prompt": "{prefix}&eÉcrivez la nouvelle valeur de &f{path} &edans le chat (&f{empty} &epour une valeur vide, &f{cancel} &epour annuler).",
+    "prompt-current": "&7Valeur actuelle : &f",
+    "prompt-list-add": "{prefix}&eÉcrivez la valeur à ajouter à &f{path} &e(&f{cancel} &epour annuler).",
+    "prompt-list-replace": "{prefix}&eÉcrivez toutes les valeurs de &f{path}&e, séparées par des virgules (&f{cancel} &epour annuler).",
+    "prompt-add": "{prefix}&eÉcrivez le nom de la nouvelle entrée de &f{path} &e(&f{cancel} &epour annuler).",
+    "cancelled": "{prefix}&7Modification annulée.",
+    "saved": "{prefix}&a{file} : &f{path} &a= &f{value}",
+    "reset": "{prefix}&a{file} : &f{path} &areprend sa valeur par défaut.",
+    "removed": "{prefix}&a{file} : &f{path} &asupprimé.",
+    "added": "{prefix}&a{file} : &f{path} &aajouté.",
+    "confirm-remove": "{prefix}&eRefaites Ctrl + Q dans les 5 secondes pour confirmer (&f{path}&e).",
+    "invalid-number": "{prefix}&c« {input} » n'est pas un nombre.",
+    "invalid-key": "{prefix}&cNom invalide : lettres, chiffres, - _ et : uniquement.",
+    "exists": "{prefix}&cL'entrée &f{key} &cexiste déjà.",
+    "empty-section": "{prefix}&cSection vide : ajoutez la première entrée dans le fichier.",
+    "save-error": "{prefix}&cImpossible d'enregistrer {file} : {error}",
+    "restart": "{prefix}&eCe réglage sera appliqué au prochain redémarrage du serveur.",
+    "unknown-file": "{prefix}&cFichier inconnu : &f{file}&c. Fichiers : config, koths, messages, menus."
+  }
+}

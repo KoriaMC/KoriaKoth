@@ -1,0 +1,30 @@
+name: KoriaKoth
+version: ${project.version}
+main: fr.koriamc.koth.KoriaKoth
+author: KoriaMC
+description: ${project.description}
+depend: [KoriaFactions]
+softdepend: [Vault, PlaceholderAPI, KoriaQuest]
+
+# La commande principale (/koth par défaut) et ses alias sont enregistrés dynamiquement
+# depuis config.json : ils ne sont donc pas déclarés ici.
+
+permissions:
+  koriakoth.*:
+    description: Accès complet à KoriaKoth
+    default: op
+    children:
+      koriakoth.player: true
+      koriakoth.admin: true
+  koriakoth.player:
+    description: Commandes joueur (les nœuds exacts sont définis dans config.json)
+    default: true
+  koriakoth.admin:
+    description: Commandes d'administration (les nœuds exacts sont définis dans config.json)
+    default: op
+  koriakoth.bypass:
+    description: Ignorer la protection des zones de KOTH
+    default: op
+  koriakoth.ignore:
+    description: Ne pas compter dans la zone (staff en modération)
+    default: false

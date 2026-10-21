@@ -1,0 +1,84 @@
+{
+  "debug": false,
+  "stockage": {
+    "type": "JSON",
+    "sauvegarde-auto-minutes": 5,
+    "copies-de-securite": 3,
+    "json-indente": false,
+    "sqlite-fichier": "donnees.db",
+    "mysql": {
+      "hote": "localhost",
+      "port": 3306,
+      "base": "koriakoth",
+      "utilisateur": "root",
+      "mot-de-passe": "",
+      "prefixe-tables": "kk_",
+      "parametres": "?useSSL=false&characterEncoding=utf8"
+    }
+  },
+  "commande": { "nom": "koth", "alias": ["kingofthehill", "kh"], "description": "Évènement KOTH" },
+  "commandes": {
+    "help": { "actif": true, "alias": ["?"], "permission": "koriakoth.command.help" },
+    "menu": { "actif": true, "alias": ["gui"], "permission": "koriakoth.command.menu" },
+    "list": { "actif": true, "alias": ["koths"], "permission": "koriakoth.command.list" },
+    "top": { "actif": true, "alias": ["leaderboard"], "permission": "koriakoth.command.top" },
+    "info": { "actif": true, "alias": ["next"], "permission": "koriakoth.command.info" },
+    "tp": { "actif": true, "alias": ["teleport"], "permission": "koriakoth.admin.tp" },
+    "start": { "actif": true, "alias": ["begin"], "permission": "koriakoth.admin.start" },
+    "stop": { "actif": true, "alias": ["end"], "permission": "koriakoth.admin.stop" },
+    "create": { "actif": true, "alias": ["new"], "permission": "koriakoth.admin.create" },
+    "delete": { "actif": true, "alias": ["del", "remove"], "permission": "koriakoth.admin.delete" },
+    "zone": { "actif": true, "alias": ["corner", "pos"], "permission": "koriakoth.admin.zone" },
+    "config": { "actif": true, "alias": ["configuration", "cfg"], "permission": "koriakoth.admin.config" },
+    "save": { "actif": true, "alias": [], "permission": "koriakoth.admin.save" },
+    "reload": { "actif": true, "alias": ["rl"], "permission": "koriakoth.admin.reload" }
+  },
+  "planning": { "actif": true, "fuseau": "Europe/Paris", "annonce-avant-minutes": [60, 30, 10, 5, 1] },
+  "evenement": {
+    "un-seul-a-la-fois": true,
+    "capture-secondes": 300,
+    "duree-max-minutes": 60,
+    "zone-vide": "PAUSE",
+    "contestation": "PAUSE",
+    "changement-controle": "REMISE-A-ZERO",
+    "cible-recompenses": "MEMBRES_EN_ZONE",
+    "points-victoire": 500,
+    "annonce-globale": true,
+    "annonce-paliers-secondes": [300, 180, 120, 60, 30, 10, 5, 3, 2, 1],
+    "participation-secondes-minimum": 30,
+    "feux-artifice": true,
+    "joueurs-sans-faction": true
+  },
+  "anti-abus": {
+    "ignorer-creatif": true,
+    "ignorer-spectateur": true,
+    "ignorer-meme-ip": true,
+    "permissions-ignorees": ["koriakoth.ignore"]
+  },
+  "protection": {
+    "pendant-evenement-seulement": true,
+    "casser-blocs": true,
+    "poser-blocs": true,
+    "enderpearl": false,
+    "conteneurs": false
+  },
+  "affichage": {
+    "destinataires": "PROCHES",
+    "rayon-proches": 60,
+    "scoreboard": true,
+    "barre": { "longueur": 20, "symbole": "|", "couleur-pleine": "&a", "couleur-vide": "&8" },
+    "top-affiches": 10,
+    "decimales-pourcentage": 0
+  },
+  "sons": {
+    "demarrage": "ENDERDRAGON_GROWL:0.8:1",
+    "controle": "NOTE_PLING:0.8:1.4",
+    "palier": "CLICK:0.8:2",
+    "victoire": "LEVEL_UP",
+    "fin": "ANVIL_LAND:0.6:1",
+    "clic-menu": "CLICK:0.5:1",
+    "erreur": "VILLAGER_NO"
+  },
+  "titres": { "apparition": 5, "duree": 40, "disparition": 10 },
+  "integrations": { "koriaquest": true, "objectif-koriaquest": "GAGNER_KOTH", "koria-gui": true, "koria-gui-prefixe": "koth_" }
+}
