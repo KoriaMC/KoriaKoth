@@ -96,7 +96,7 @@ public final class Display {
                 "id", session.getDefinition().getId(),
                 "temps", time(session.getRemainingSeconds()),
                 "secondes", session.getRemainingSeconds(),
-                "total", session.getDefinition().getCaptureSeconds(),
+                "total", session.getCaptureTotal(),
                 "barre", bar(session.getProgress()),
                 "pourcentage", percent(session.getProgress()),
                 "controle", controller,

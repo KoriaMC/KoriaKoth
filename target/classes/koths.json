@@ -1,41 +1,20 @@
 {
   "spawn": {
-    "nom": "&6KOTH du Spawn",
+    "nom": "&6KOTH",
     "icone": "BEACON",
     "monde": "world",
     "zone": { "x1": 95, "y1": 60, "z1": 95, "x2": 105, "y2": 68, "z2": 105 },
-    "capture-secondes": 300,
+    "capture-secondes": 40,
+    "paliers-capture": { "0": 40, "10": 25, "20": 20, "25": 15 },
     "zone-vide": "PAUSE",
     "contestation": "PAUSE",
     "changement-controle": "REMISE-A-ZERO",
-    "duree-max-minutes": 60,
+    "duree-max-minutes": 30,
     "planning": { "actif": true, "jours": ["MERCREDI", "SAMEDI", "DIMANCHE"], "heures": ["18:00", "21:00"] },
-    "points-victoire": 500,
+    "points-victoire": 2000,
     "recompenses": {
       "cible": "MEMBRES_EN_ZONE",
-      "vainqueur": ["ARGENT:5000", "ITEM:DIAMOND:16", "MESSAGE:[title]&6&lKOTH REMPORTÉ !;;&e{koth}"],
-      "participants": ["ARGENT:500", "MESSAGE:{prefix}&7Merci d'avoir défendu le KOTH : &f500$"]
-    }
-  },
-  "nether": {
-    "nom": "&cKOTH du Nether",
-    "icone": "NETHER_STAR",
-    "monde": "world_nether",
-    "zone": { "x1": 0, "y1": 0, "z1": 0, "x2": 0, "y2": 0, "z2": 0 },
-    "capture-secondes": 420,
-    "zone-vide": "REMISE-A-ZERO",
-    "contestation": "PAUSE",
-    "changement-controle": "REMISE-A-ZERO",
-    "duree-max-minutes": 90,
-    "planning": { "actif": false, "jours": ["VENDREDI"], "heures": ["21:30"] },
-    "points-victoire": 1000,
-    "recompenses": {
-      "cible": "MEMBRES_EN_LIGNE",
-      "vainqueur": [
-        "ARGENT:10000",
-        "ITEM:DIAMOND_BLOCK:4",
-        "ANNONCE:{prefix}&6La faction &e{controle} &6a remporté le &c{koth} &6!"
-      ],
+      "vainqueur": ["MESSAGE:[title]&6&lKOTH REMPORTÉ !;;&e{koth}"],
       "participants": []
     }
   }

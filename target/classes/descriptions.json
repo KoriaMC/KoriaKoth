@@ -101,6 +101,7 @@
     "*.monde": "Monde de la zone de capture.",
     "*.zone": "Les deux coins de la zone, placés en jeu avec /koth zone <koth> 1 puis 2.",
     "*.capture-secondes": "Temps à passer seul dans la zone pour gagner.",
+    "*.paliers-capture": "Temps de capture qui diminue pendant l'évènement : minute de l'évènement -> secondes de capture (ex. 0:40, 10:25, 20:20, 25:15).",
     "*.zone-vide": ["Effet quand plus personne n'est dans la zone.", "PAUSE", "REMISE-A-ZERO", "CONTINUER"],
     "*.contestation": ["Effet quand plusieurs factions sont dans la zone.", "PAUSE", "REMISE-A-ZERO", "CONTINUER"],
     "*.changement-controle": ["Effet quand une autre faction prend le contrôle.", "REMISE-A-ZERO", "CONTINUER"],

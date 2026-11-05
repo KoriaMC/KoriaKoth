@@ -27,6 +27,8 @@ public final class KothDefinition {
     private final long victoryPoints;
     private final List<String> winnerRewards;
     private final List<String> participantRewards;
+    /** Paliers de temps de capture : minute de l'évènement -> secondes de capture (vide = capture fixe). */
+    private java.util.TreeMap<Integer, Integer> captureSteps = new java.util.TreeMap<Integer, Integer>();
 
     private KothDefinition(String id, String name, String icon, Zone zone, int captureSeconds,
                            Interruption whenEmpty, Interruption whenContested, Interruption whenControlChanges,
@@ -94,8 +96,24 @@ public final class KothDefinition {
         List<String> winner = Items.stringList(rewards, "vainqueur");
         List<String> participants = Items.stringList(rewards, "participants");
         long points = Math.max(0, s.getLong("points-victoire", settings.victoryPoints));
-        return new KothDefinition(id, name, icon, zone, capture, empty, contested, control, Math.max(0, maxMinutes),
+        KothDefinition def = new KothDefinition(id, name, icon, zone, capture, empty, contested, control, Math.max(0, maxMinutes),
                 schedule, target, points, winner, participants);
+        ConfigurationSection steps = s.getConfigurationSection("paliers-capture");
+        if (steps != null) {
+            for (String minute : steps.getKeys(false)) {
+                try {
+                    int m = Integer.parseInt(minute.trim());
+                    int secs = steps.getInt(minute);
+                    if (m < 0 || secs <= 0) {
+                        throw new NumberFormatException();
+                    }
+                    def.captureSteps.put(m, secs);
+                } catch (NumberFormatException e) {
+                    problems.add(where + ".paliers-capture." + minute + " : minute et secondes positives attendues");
+                }
+            }
+        }
+        return def;
     }
 
     public String getId() {
@@ -119,6 +137,16 @@ public final class KothDefinition {
     /** Secondes à passer dans la zone pour gagner. */
     public int getCaptureSeconds() {
         return captureSeconds;
+    }
+
+    /** Secondes de capture demandées après {@code elapsedMillis} d'évènement (paliers-capture, sinon fixe). */
+    public int getCaptureSecondsAt(long elapsedMillis) {
+        java.util.Map.Entry<Integer, Integer> step = captureSteps.floorEntry((int) (elapsedMillis / 60000L));
+        return step == null ? captureSeconds : step.getValue();
+    }
+
+    public java.util.SortedMap<Integer, Integer> getCaptureSteps() {
+        return java.util.Collections.unmodifiableSortedMap(captureSteps);
     }
 
     public Interruption getWhenEmpty() {

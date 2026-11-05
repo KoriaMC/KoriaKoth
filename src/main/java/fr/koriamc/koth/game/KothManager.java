@@ -272,6 +272,7 @@ public final class KothManager {
             }
             group.add(player);
         }
+        session.refreshCaptureStep();
         session.getInZone().clear();
         session.getInZone().addAll(inZone);
         session.setContested(groups.size() > 1);
@@ -296,7 +297,7 @@ public final class KothManager {
     /** Zone vide ou contestée : le compte à rebours est gelé, remis à zéro ou continue. */
     private void interrupt(KothSession session, Interruption mode) {
         if (mode == Interruption.REMISE_A_ZERO) {
-            if (session.getController() != null || session.getRemaining() < session.getDefinition().getCaptureSeconds()) {
+            if (session.getController() != null || session.getRemaining() < session.getCaptureTotal()) {
                 session.setController(null, null, null);
                 session.resetCountdown();
             }

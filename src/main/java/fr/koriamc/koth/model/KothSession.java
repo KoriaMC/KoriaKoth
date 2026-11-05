@@ -28,6 +28,8 @@ public final class KothSession {
     private final Set<Integer> announced = new HashSet<Integer>();
 
     private double remaining;
+    /** Temps de capture du palier en cours (diminue avec les paliers-capture). */
+    private int total;
     private String controller;
     private String controllerName;
     private UUID capper;
@@ -35,7 +37,25 @@ public final class KothSession {
 
     public KothSession(KothDefinition definition) {
         this.definition = definition;
-        this.remaining = definition.getCaptureSeconds();
+        this.total = definition.getCaptureSecondsAt(0);
+        this.remaining = total;
+    }
+
+    /** Temps de capture du palier en cours. */
+    public int getCaptureTotal() {
+        return total;
+    }
+
+    /**
+     * Applique le palier de capture correspondant au temps écoulé : si le temps
+     * demandé baisse, le compte à rebours en cours est raccourci d'autant.
+     */
+    public void refreshCaptureStep() {
+        int now = definition.getCaptureSecondsAt(elapsedMillis());
+        if (now < total) {
+            remaining = Math.max(0, remaining - (total - now));
+        }
+        total = now;
     }
 
     public KothDefinition getDefinition() {
@@ -72,13 +92,13 @@ public final class KothSession {
     }
 
     public void resetCountdown() {
-        remaining = definition.getCaptureSeconds();
+        total = definition.getCaptureSecondsAt(elapsedMillis());
+        remaining = total;
         announced.clear();
     }
 
     /** Progression de la capture, de 0 à 1. */
     public double getProgress() {
-        int total = definition.getCaptureSeconds();
         return total <= 0 ? 1 : Math.max(0, Math.min(1, (total - remaining) / total));
     }
 
