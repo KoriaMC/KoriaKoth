@@ -2,7 +2,7 @@ name: KoriaKoth
 version: ${project.version}
 main: fr.koriamc.koth.KoriaKoth
 author: KoriaMC
-description: ${project.description}
+description: "${project.description}"
 depend: [KoriaFactions]
 softdepend: [Vault, PlaceholderAPI, KoriaQuest]
 
